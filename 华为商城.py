@@ -1,28 +1,21 @@
 # coding = utf-8
 """
-@author: zhou
-@time:2019/8/24 13:01
-@File: details_page.py
+@author: wg
+@time:2019/10/16
+@File: 华为商城.py
 """
 
 import requests
 import time
 import json
-#from pymongo import MongoClient
 
-
-#conn = MongoClient("mongodb://%s:%s@ds149974.mlab.com:49974/you163" % ('you163', 'you163'))
-#db = conn.you163
-#mongo_collection = db.iPhone
 
 
 def details(product_id):
     url = 'https://openapi.vmall.com/rms/comment/getCommentList.json?t=1571369417856'
-    #proxy = {"https": "xx.aa.com:8080"}
     try:
         C_list = []
         for i in range(1, 3):
-            #data={'userCode':'csqy123456','userPWD':'123456'}
             query = {"pid":"10086471194207","gbomCode":"","type":0,"extraType":1,"pageSize":10,"pageNum":i}
             res = requests.post(url, data=json.dumps(query))
             print(res.encoding)
@@ -35,11 +28,7 @@ def details(product_id):
             #commentlist=comment['content']
             C_list.append(comment)
             time.sleep(1)
-            # save to mongoDB
-            # try:
-            #     mongo_collection.insert_many(commentList)
-            # except:
-            #     continue
+
         return C_list
     except:
         raise
