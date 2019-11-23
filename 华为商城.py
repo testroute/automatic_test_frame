@@ -8,7 +8,9 @@
 import requests
 import time
 import json
-
+import sys
+import io
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='gb18030')#修改Windows默认输出，对应GBK can't decode error
 
 
 def details(product_id):
